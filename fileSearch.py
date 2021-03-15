@@ -24,13 +24,31 @@ def fileSearchMatch(pathToSearchFrom,fileToSearchList):
                     print(str(path)+"\\"+str(file))
 
 def fileSearchMatchEnd(pathToSearchFrom,fileToSearchList):
-   pass
+    for fileToSearch in fileToSearchList:
+        walkDataObject = os.walk(pathToSearchFrom)
+        for path,_,files in walkDataObject:
+            for file in files:
+                pattern = re.compile(f"{fileToSearch}$")
+                if pattern.search(str(file)):
+                    print(str(path)+"\\"+str(file))
 
 def fileSearchMatchStart(pathToSearchFrom,fileToSearchList):
-    pass
+     for fileToSearch in fileToSearchList:
+        walkDataObject = os.walk(pathToSearchFrom)
+        for path,_,files in walkDataObject:
+            for file in files:
+                pattern = re.compile(f"{fileToSearch}")
+                if pattern.search(str(file)):
+                    print(str(path)+"\\"+str(file))
 
 def fileSearchMatchContain(pathToSearchFrom,fileToSearchList):
-    pass
+     for fileToSearch in fileToSearchList:
+        walkDataObject = os.walk(pathToSearchFrom)
+        for path,_,files in walkDataObject:
+            for file in files:
+                pattern = re.compile(f"{fileToSearch}")
+                if pattern.search(str(file)):
+                    print(str(path)+"\\"+str(file))
 
 def dirSearchMatch(pathToSearchFrom,dirToSearchList):
     for dirToSearch in dirToSearchList:
@@ -44,9 +62,16 @@ def dirSearchMatch(pathToSearchFrom,dirToSearchList):
 
 if __name__ == "__main__":
     print("\n_______________ Files _______________")
-    if value.file != None:
+    if value.end and value.file != None:
+       fileSearchMatchEnd(value.path,value.file)
+    if value.start and value.file != None:
+        fileSearchMatchStart(value.path,value.file)
+    if value.contain and value.file != None:
+        fileSearchMatchContain(value.path,value.file)
+    elif value.file != None:
        fileSearchMatch(value.path,value.file)
     
     print("\n_______________ Folders ______________")
     if value.dir != None:
         dirSearchMatch(value.path,value.dir)
+    
