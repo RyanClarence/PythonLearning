@@ -11,20 +11,23 @@ value = argparseObject.parse_args()
 
 def fileSearch(pathToSearchFrom,fileToSearch): 
     walkDataObject = os.walk(pathToSearchFrom)
-    for _,_,files in walkDataObject:
+    for path,_,files in walkDataObject:
         for file in files:
             if file == fileToSearch:
-                print(file)
+                print(str(path)+"\\"+str(file))
 
 def dirSearch(pathToSearchFrom,dirToSearch):
     walkDataObject = os.walk(pathToSearchFrom)
-    for _,dirs,_ in walkDataObject:
+    for path,dirs,_ in walkDataObject:
         for dir in dirs:
             if dir == dirToSearch:
-                print(dir)
+                 print(str(path)+"\\"+str(dir))
 
 if __name__ == "__main__":
+    print("\n_______________ Files _______________")
     if value.file != None:
         fileSearch(value.path,value.file)
+    
+    print("\n_______________ Folders ______________")
     if value.dir != None:
         dirSearch(value.path,value.dir)
