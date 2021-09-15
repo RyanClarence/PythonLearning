@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""
-  Author: Sboniso Gordon Mzizi
-"""
+###########################################################
+#  Author Name : Sboniso Gordon Mziz                      #
+###########################################################
 def to_binary(value):
     binary_data = [0,0,0,0,0,0,0,0]
     status = True
